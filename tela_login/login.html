@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login | Vetro Vivo</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="login-container">
+        <div class="logo">Vetro<span>Vivo</span></div>
+        
+        <form id="loginForm">
+            <div class="input-group">
+                <label for="email">E-mail</label>
+                <input type="email" id="email" placeholder="seu@email.com" required>
+            </div>
+
+            <div class="input-group">
+                <label for="password">Senha</label>
+                <input type="password" id="password" placeholder="••••••••" required>
+            </div>
+
+            <div class="aux-links">
+                <label class="checkbox-label">
+                    <input type="checkbox" id="remember"> Lembrar-me
+                </label>
+                <a href="#" id="forgotPassword">Esqueceu a senha?</a>
+            </div>
+
+            <button type="submit" class="btn-login" id="btnLogin">ENTRAR</button>
+            
+            <p class="signup-text">Não tem uma conta? <a href="#">Cadastre-se</a></p>
+            
+            <a href="../tela_inicial/index.html" class="btn-visitor">Continuar sem logar →</a>
+        </form>
+
+        <div class="social-login">
+            <p>OU ENTRE COM</p>
+            <div class="social-icons">
+                <div class="social-btn" title="Google">G</div>
+                <div class="social-btn" title="Facebook">f</div>
+                <div class="social-btn" title="Apple">A</div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

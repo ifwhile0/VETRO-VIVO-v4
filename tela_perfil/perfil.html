@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VetroVivo | Meu Perfil</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="perfil.css">
+</head>
+<body>
+
+    <header class="page-header">
+        <nav class="container">
+            <div class="logo">Vetro<span>Vivo</span></div>
+            <ul class="nav-links">
+                <li><a href="../tela_inicial/index.html">Início</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="perfil-layout container">
+        <aside class="sidebar">
+            <div class="user-card">
+                <div class="avatar">👤</div>
+                <h3>Nome do Cliente</h3>
+                <p>Membro desde 2026</p>
+            </div>
+            <nav class="sidebar-nav">
+                <a href="#" class="nav-item active" data-tab="dados">Meus Dados</a>
+                <a href="#" class="nav-item" data-tab="projetos">Meus Projetos</a>
+                <a href="#" class="nav-item" data-tab="historico">Histórico</a>
+                <a href="#" class="nav-item logout">Sair</a>
+            </nav>
+        </aside>
+
+        <section class="perfil-content">
+            
+            <div id="dados" class="tab-content">
+                <h2>Meus Dados</h2>
+                <div class="form-container">
+                    <div class="input-group">
+                        <label>Nome Completo</label>
+                        <input type="text" value="Nome do Usuário">
+                    </div>
+                    <div class="input-group">
+                        <label>E-mail</label>
+                        <input type="email" value="cliente@vetrovivo.com">
+                    </div>
+                    <button class="btn-save">Salvar Alterações</button>
+                </div>
+            </div>
+
+            <div id="projetos" class="tab-content" style="display: none;">
+                <h2>Meus Projetos</h2>
+                <div class="projeto-item">
+                    <div class="projeto-header">
+                        <span class="status-badge">Ativo</span>
+                        <h4>Aquário Marinho Premium (200L)</h4>
+                    </div>
+                    <p><strong>Início:</strong> 12/02/2026</p>
+                    <p><strong>Tipo:</strong> Água Salgada</p>
+                    <div class="progress-container">
+                        <span>Saúde do Ecossistema: 95%</span>
+                        <div class="progress-bar"><div class="progress-fill" style="width: 95%;"></div></div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="historico" class="tab-content" style="display: none;">
+                <h2>Histórico de Compras</h2>
+                <table class="historico-table">
+                    <thead>
+                        <tr>
+                            <th>Data</th>
+                            <th>Item</th>
+                            <th>Valor</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>22/04/2026</td>
+                            <td>Ração Tetra Color 100g</td>
+                            <td>R$ 85,00</td>
+                            <td class="entregue">Entregue</td>
+                        </tr>
+                        <tr>
+                            <td>15/04/2026</td>
+                            <td>Kit Filtro Canister UV</td>
+                            <td>R$ 1.200,00</td>
+                            <td class="entregue">Entregue</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>

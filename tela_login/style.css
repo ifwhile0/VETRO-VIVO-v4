@@ -1,0 +1,224 @@
+img, video, canvas {
+    max-width: 100%;
+    height: auto;
+}
+
+:root {
+    --primary: #004684;    /* Azul Marinho */
+    --secondary: #00bcd4;  /* Ciano / Turquesa */
+    --accent: #002a50;     /* Azul Profundo */
+    --white: #ffffff;
+}
+
+@media (max-width: 768px) {
+    .navbar .container {
+        flex-direction: column; /* Logo em cima, links embaixo */
+        gap: 15px;
+    }
+    
+    .nav-links {
+        gap: 15px;
+        font-size: 0.9rem;
+    }
+
+    .page-header h1 {
+        font-size: 1.8rem; /* Diminui o título para não quebrar linha feio */
+    }
+}
+
+* { 
+    margin: 0; 
+    padding: 0; 
+    box-sizing: border-box; 
+    font-family: 'Poppins', sans-serif; 
+}
+
+body {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* Degradê animado com as cores da marca */
+    background: linear-gradient(-45deg, var(--primary), var(--secondary), var(--accent), #e0f7fa);
+    background-size: 400% 400%;
+    animation: gradientShift 15s ease infinite;
+    overflow: hidden;
+}
+
+/* Animação para o fundo não ficar estático */
+@keyframes gradientShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.login-container {
+    /* Efeito Glassmorphism: Fundo branco semi-transparente com desfoque */
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    padding: 40px;
+    border-radius: 30px;
+    width: 100%;
+    max-width: 400px;
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.2);
+    text-align: center;
+}
+
+.logo { 
+    font-size: 2.2rem; 
+    font-weight: 700; 
+    margin-bottom: 30px; 
+    color: var(--primary); 
+}
+
+.logo span { 
+    color: var(--secondary); 
+}
+
+/* Estilização dos campos de entrada */
+.input-group { 
+    margin-bottom: 20px; 
+    text-align: left; 
+}
+
+.input-group label { 
+    font-size: 0.85rem; 
+    color: var(--primary); 
+    font-weight: 600; 
+    margin-left: 5px; 
+}
+        
+.input-group input {
+    width: 100%;
+    padding: 14px 15px;
+    background: rgba(0, 188, 212, 0.05);
+    border: 1px solid rgba(0, 70, 132, 0.1);
+    outline: none;
+    border-radius: 12px;
+    color: var(--primary);
+    font-size: 1rem;
+    margin-top: 5px;
+    transition: 0.3s ease;
+}
+
+.input-group input:focus {
+    background: var(--white);
+    border-color: var(--secondary);
+    box-shadow: 0 0 15px rgba(0, 188, 212, 0.2);
+}
+
+/* Links e Checkbox */
+.aux-links {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.8rem;
+    margin-bottom: 25px;
+    color: var(--primary);
+}
+
+.aux-links a { 
+    color: var(--secondary); 
+    text-decoration: none; 
+    font-weight: 600; 
+}
+
+.aux-links a:hover { 
+    text-decoration: underline; 
+}
+
+/* Botão de Entrar Estilo Pílula */
+.btn-login {
+    width: 100%;
+    padding: 15px;
+    border: none;
+    border-radius: 50px;
+    background: var(--primary);
+    color: white;
+    font-weight: 700;
+    font-size: 1rem;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-login:hover {
+    background: var(--secondary);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0, 188, 212, 0.4);
+}
+
+/* Visual Moderno do Cadastre-se */
+.signup-text { 
+    font-size: 0.9rem; 
+    margin-top: 25px; 
+    color: #555; 
+}
+
+.signup-text a {
+    color: var(--secondary);
+    text-decoration: none;
+    font-weight: 700;
+    padding: 4px 12px;
+    border-radius: 8px;
+    transition: 0.3s;
+}
+
+.signup-text a:hover {
+    background: rgba(0, 188, 212, 0.1);
+    color: var(--primary);
+}
+
+.btn-visitor {
+    display: block;
+    text-decoration: none;
+    color: var(--primary);
+    font-size: 0.85rem;
+    margin-top: 15px;
+    opacity: 0.7;
+    transition: 0.3s;
+}
+
+.btn-visitor:hover { 
+    opacity: 1; 
+}
+
+/* Divisor Social */
+.social-login { 
+    margin-top: 30px; 
+    padding-top: 20px; 
+    border-top: 1px solid rgba(0, 0, 0, 0.05); 
+}
+
+.social-login p { 
+    font-size: 0.7rem; 
+    color: #999; 
+    margin-bottom: 15px; 
+}
+
+.social-icons { 
+    display: flex; 
+    justify-content: center; 
+    gap: 20px; 
+}
+
+.social-btn {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    background: #f1f3f4;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: var(--primary);
+    transition: 0.3s;
+    font-weight: bold;
+}
+
+.social-btn:hover { 
+    background: var(--primary); 
+    color: white; 
+}

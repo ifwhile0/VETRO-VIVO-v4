@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Produtos | Vetro Vivo</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #004684;
+            --secondary: #00bcd4;
+            --bg: #f4f9ff;
+            --white: #ffffff;
+            --danger: #ff5252;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
+        body { background-color: var(--bg); color: #333; overflow-x: hidden; }
+
+        /* Navbar */
+        .navbar { 
+            padding: 20px 0; background: white; border-bottom: 1px solid rgba(0, 70, 132, 0.1); 
+            position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+        .navbar .container { display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-size: 1.5rem; font-weight: 700; color: var(--primary); text-decoration: none; }
+        .logo span { color: var(--secondary); }
+        .nav-links { display: flex; list-style: none; gap: 25px; }
+        .nav-links a { text-decoration: none; color: var(--primary); font-weight: 500; transition: 0.3s; }
+        .nav-links a:hover { color: var(--secondary); }
+
+        /* Carrinho Lateral (Drawer) */
+        #carrinho-lateral {
+            position: fixed; right: -350px; top: 0; width: 320px; height: 100%;
+            background: white; box-shadow: -5px 0 15px rgba(0,0,0,0.1);
+            z-index: 1000; transition: 0.4s; padding: 20px;
+            display: flex; flex-direction: column;
+        }
+        #carrinho-lateral.active { right: 0; }
+        .itens-carrinho { flex-grow: 1; overflow-y: auto; margin: 20px 0; }
+        .item-row { display: flex; justify-content: space-between; margin-bottom: 15px; font-size: 0.9rem; border-bottom: 1px solid #eee; padding-bottom: 5px; }
+        .btn-remover { color: var(--danger); cursor: pointer; border: none; background: none; font-weight: bold; }
+
+        /* Header e Filtros */
+        .page-header { padding: 50px 0 30px; text-align: center; }
+        .page-header h1 { color: var(--primary); margin-bottom: 20px; font-size: 2.2rem; }
+        .filters { display: flex; justify-content: center; gap: 10px; margin-bottom: 40px; flex-wrap: wrap; }
+        
+        .filter-btn { 
+            padding: 10px 22px; border-radius: 50px; border: 2px solid var(--primary);
+            background: white; color: var(--primary); cursor: pointer; font-weight: 600; transition: 0.3s;
+        }
+        .filter-btn.active, .filter-btn:hover { background: var(--primary); color: white; }
+
+        /* Grade de Produtos */
+        .products-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 20px; }
+        
+        .product-card { 
+            background: white; border-radius: 20px; padding: 20px; text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05); transition: 0.4s; border: 1px solid transparent;
+        }
+        .product-card:hover { transform: translateY(-5px); border-color: var(--secondary); }
+        .product-icon { font-size: 2.5rem; margin-bottom: 10px; display: block; }
+        .product-card h3 { font-size: 0.95rem; color: var(--primary); height: 40px; display: flex; align-items: center; justify-content: center; }
+        .price { color: var(--secondary); font-weight: 700; font-size: 1.1rem; display: block; margin: 10px 0; }
+        
+        .btn-add { 
+            display: block; width: 100%; padding: 10px; background: var(--primary); color: white; 
+            border: none; border-radius: 8px; font-weight: 600; cursor: pointer; transition: 0.3s;
+        }
+        .btn-confirm { 
+            background: var(--secondary); color: white; border: none; padding: 15px; 
+            border-radius: 8px; font-weight: 700; cursor: pointer; width: 100%; 
+        }
+
+        footer { text-align: center; padding: 50px; color: #888; font-size: 0.8rem; }
+    </style>
+</head>
+<body>
+
+    <div id="carrinho-lateral">
+        <div style="display: flex; justify-content: space-between; align-items: center;">
+            <h2>Carrinho</h2>
+            <button onclick="toggleCarrinho()" style="border:none; background:none; font-size:1.5rem; cursor:pointer;">&times;</button>
+        </div>
+        <div class="itens-carrinho" id="lista-itens">
+            </div>
+        <div style="border-top: 2px solid #eee; padding-top: 15px; margin-bottom: 20px;">
+            <div style="display: flex; justify-content: space-between; font-weight: 700; font-size: 1.2rem;">
+                <span>Total:</span>
+                <span id="total-cart">R$ 0,00</span>
+            </div>
+        </div>
+        <button class="btn-confirm" onclick="irParaPagamento()">Finalizar Compra</button>
+    </div>
+
+    <nav class="navbar">
+        <div class="container">
+            <a href="../tela_inicial/index.html" class="logo">Vetro<span>Vivo</span></a>
+            <ul class="nav-links">
+                <li><a href="../tela_inicial/index.html">Início</a></li>
+                <li><a href="../tela_produtos/produtos.html" style="color: var(--secondary)">Produtos</a></li>
+                <li><a href="../selecao_projeto/projeto.html">Orçamento</a></li>
+                <li><a href="#" onclick="toggleCarrinho()">🛒 Carrinho</a></li>
+                <li><a href="../tela_perfil/perfil.html">Perfil</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <header class="page-header">
+        <div class="container">
+            <h1>Nosso Catálogo</h1>
+            <div class="filters">
+                <button class="filter-btn active" data-filter="all">Todos</button>
+                <button class="filter-btn" data-filter="peixes">Peixes</button>
+                <button class="filter-btn" data-filter="aquarios">Aquários</button>
+                <button class="filter-btn" data-filter="filtros">Filtros</button>
+                <button class="filter-btn" data-filter="luminarias">Luminárias</button>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="products-grid">
+            <div class="product-card peixes">
+                <span class="product-icon">🐠</span>
+                <h3>Kinguio-telescópio</h3>
+                <span class="price">R$ 180,00</span>
+                <button class="btn-add" onclick="adicionar('Kinguio-telescópio', 180.00)">Adicionar</button>
+            </div>
+
+            <div class="product-card peixes">
+                <span class="product-icon">🐠</span>
+                <h3>Guppy Dumbo Azul</h3>
+                <span class="price">R$ 180,00</span>
+                <button class="btn-add" onclick="adicionar('Guppy Dumbo Azul', 180.00)">Adicionar</button>
+            </div>
+            
+            <div class="product-card peixes">
+                <span class="product-icon">🐠</span>
+                <h3>Acará Bandeira</h3>
+                <span class="price">R$ 180,00</span>
+                <button class="btn-add" onclick="adicionar('Acará Bandeira', 180.00)">Adicionar</button>
+            </div>
+
+            <div class="product-card peixes">
+                <span class="product-icon">🐠</span>
+                <h3>Acará Disco</h3>
+                <span class="price">R$ 180,00</span>
+                <button class="btn-add" onclick="adicionar('Acará Disco', 180.00)">Adicionar</button>
+            </div>
+
+            <div class="product-card peixes">
+                <span class="product-icon">🐠</span>
+                <h3>Ramirezi Ouro Balão</h3>
+                <span class="price">R$ 180,00</span>
+                <button class="btn-add" onclick="adicionar('Ramirezi Ouro Balão', 180.00)">Adicionar</button>
+            </div>
+
+            <div class="product-card peixes">
+                <span class="product-icon">🐟</span>
+                <h3>Green Chromis</h3>
+                <span class="price">R$ 180,00</span>
+                <button class="btn-add" onclick="adicionar('Green Chromis', 180.00)">Adicionar</button>
+            </div>
+
+            <div class="product-card peixes">
+                <span class="product-icon">🐟</span>
+                <h3>Rabbit Fox Face</h3>
+                <span class="price">R$ 180,00</span>
+                <button class="btn-add" onclick="adicionar('Rabbit Fox Face', 180.00)">Adicionar</button>
+            </div>
+
+            <div class="product-card peixes">
+                <span class="product-icon">🐟</span>
+                <h3>Acará Disco Blue</h3>
+                <span class="price">R$ 180,00</span>
+                <button class="btn-add" onclick="adicionar('Acará Disco Blue', 180.00)">Adicionar</button>
+            </div>
+
+            <div class="product-card peixes">
+                <span class="product-icon">🐟</span>
+                <h3>Acará Disco Blue</h3>
+                <span class="price">R$ 180,00</span>
+                <button class="btn-add" onclick="adicionar('Acará Disco Blue', 180.00)">Adicionar</button>
+            </div>
+            
+            <div class="product-card peixes">
+                <span class="product-icon">🐟</span>
+                <h3>Neon Cardinal</h3>
+                <span class="price">R$ 4,50</span>
+                <button class="btn-add" onclick="adicionar('Neon Cardinal', 4.50)">Adicionar</button>
+            </div>
+
+            <div class="product-card aquarios">
+                <span class="product-icon">💎</span>
+                <h3>Extra Clear 30L</h3>
+                <span class="price">R$ 280,00</span>
+                <button class="btn-add" onclick="adicionar('Extra Clear 30L', 280.00)">Adicionar</button>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Vetro Vivo - Todos os direitos reservados.</p>
+    </footer>
+
+    <script>
+        // Lógica de Filtros (Já existente)
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const products = document.querySelectorAll('.product-card');
+
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                filterBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                const filterValue = btn.getAttribute('data-filter');
+                products.forEach(item => {
+                    if (filterValue === 'all' || item.classList.contains(filterValue)) {
+                        item.style.display = 'block';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+            });
+        });
+
+        // --- LÓGICA DO CARRINHO ---
+        let carrinho = [];
+        let total = 0;
+
+        function toggleCarrinho() {
+            document.getElementById('carrinho-lateral').classList.toggle('active');
+        }
+
+        function adicionar(nome, preco) {
+            carrinho.push({ nome, preco });
+            atualizarCarrinho();
+            // Abre o carrinho automaticamente ao adicionar
+            if(!document.getElementById('carrinho-lateral').classList.contains('active')){
+                toggleCarrinho();
+            }
+        }
+
+        function remover(index) {
+            carrinho.splice(index, 1);
+            atualizarCarrinho();
+        }
+
+        function atualizarCarrinho() {
+            const lista = document.getElementById('lista-itens');
+            const totalElemento = document.getElementById('total-cart');
+            
+            lista.innerHTML = '';
+            total = 0;
+
+            carrinho.forEach((item, index) => {
+                total += item.preco;
+                lista.innerHTML += `
+                    <div class="item-row">
+                        <span>${item.nome}</span>
+                        <span>R$ ${item.preco.toFixed(2)} 
+                            <button class="btn-remover" onclick="remover(${index})">x</button>
+                        </span>
+                    </div>
+                `;
+            });
+
+            totalElemento.innerText = `R$ ${total.toFixed(2)}`;
+        }
+
+        function irParaPagamento() {
+            if (carrinho.length === 0) {
+                alert("Seu carrinho está vazio!");
+                return;
+            }
+            // Salvando o total para usar na próxima página
+            localStorage.setItem('totalCompra', total.toFixed(2));
+            // Redireciona
+            window.location.href = "../tela_pagamento/pagamento.html";
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,99 @@
+img, video, canvas {
+    max-width: 100%;
+    height: auto;
+}
+
+:root {
+    --primary: #004684;
+    --secondary: #00bcd4;
+    --accent: #e0f7fa;
+    --white: #ffffff;
+    --text: #333;
+}
+
+@media (max-width: 768px) {
+    .navbar .container {
+        flex-direction: column; /* Logo em cima, links embaixo */
+        gap: 15px;
+    }
+    
+    .nav-links {
+        gap: 15px;
+        font-size: 0.9rem;
+    }
+
+    .page-header h1 {
+        font-size: 1.8rem; /* Diminui o título para não quebrar linha feio */
+    }
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
+body { background-color: #f0f4f8; color: var(--text); line-height: 1.6; }
+
+/* Navbar */
+.navbar {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 20px 8%; background: var(--white); box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+.logo { font-size: 1.6rem; font-weight: 700; color: var(--primary); }
+.logo span { color: var(--secondary); }
+.nav-links a { text-decoration: none; color: var(--primary); font-weight: 600; transition: 0.3s; }
+.nav-links a:hover { color: var(--secondary); }
+
+/* Hero */
+/* Hero - AGORA COM IMAGEM DE LUXO CORRETA */
+.hero-manutencao {
+    background: linear-gradient(135deg, rgba(0,70,132,0.9), rgba(0,188,212,0.7)), 
+                url('https://images.unsplash.com/photo-1544551763-8dd0675a0bbb?auto=format&fit=crop&q=80&w=1500');
+    background-size: cover; 
+    background-position: center;
+    height: 40vh; 
+    display: flex; 
+    align-items: center; 
+    justify-content: center;
+    color: white; 
+    text-align: center; 
+    padding: 0 20px;
+}
+
+.hero-content h1 { font-size: 2.8rem; margin-bottom: 10px; text-shadow: 2px 2px 4px rgba(0,0,0,0.3); }
+
+/* Pricing Grid */
+.container { max-width: 1200px; margin: -60px auto 60px; padding: 0 20px; }
+.pricing-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+
+.price-card {
+    background: white; padding: 40px 30px; border-radius: 25px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1); transition: all 0.4s ease;
+    display: flex; flex-direction: column; position: relative; overflow: hidden;
+}
+
+.price-card:hover { transform: translateY(-15px); box-shadow: 0 20px 40px rgba(0,0,0,0.15); }
+
+.price-card.featured { border: 2px solid var(--secondary); transform: scale(1.05); z-index: 1; }
+.price-card.featured:hover { transform: scale(1.05) translateY(-10px); }
+
+.badge {
+    position: absolute; top: 0; right: 0; background: var(--secondary);
+    color: white; padding: 8px 25px; font-size: 0.75rem; font-weight: 700;
+    border-bottom-left-radius: 20px; text-transform: uppercase;
+}
+
+.card-header h3 { font-size: 1.4rem; color: var(--primary); margin-bottom: 15px; }
+.price { font-size: 2.5rem; font-weight: 700; color: var(--secondary); margin-bottom: 25px; }
+.price span { font-size: 1rem; color: #888; font-weight: 400; }
+
+.features { list-style: none; margin-bottom: 35px; flex-grow: 1; }
+.features li { margin-bottom: 15px; font-size: 0.95rem; display: flex; align-items: center; }
+.features li::before { 
+    content: '✓'; color: var(--secondary); font-weight: bold; 
+    margin-right: 12px; background: var(--accent); width: 25px; height: 25px;
+    display: inline-flex; align-items: center; justify-content: center; border-radius: 50%;
+}
+
+.btn-select {
+    background: var(--primary); color: white; text-decoration: none;
+    padding: 15px; border-radius: 50px; font-weight: 700; text-align: center;
+    transition: 0.3s;
+}
+.btn-select:hover { background: var(--secondary); letter-spacing: 1px; }

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solicitar Orçamento | Vetro Vivo</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #004684;
+            --secondary: #00bcd4;
+            --bg-gray: #f8f9fa;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
+        body { background-color: var(--bg-gray); color: var(--primary); }
+
+        .navbar {
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 20px 8%; background: white; box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+        .logo { font-size: 1.5rem; font-weight: 700; color: var(--primary); }
+        .logo span { color: var(--secondary); }
+        .nav-links { display: flex; list-style: none; gap: 25px; }
+        .nav-links a { text-decoration: none; color: var(--primary); font-weight: 500; }
+
+        .budget-container { max-width: 800px; margin: 60px auto; padding: 0 20px; }
+        .budget-header { text-align: center; margin-bottom: 40px; }
+        .budget-header h1 { font-size: 2.2rem; margin-bottom: 10px; }
+
+        .budget-form { 
+            background: white; padding: 40px; border-radius: 30px; 
+            box-shadow: 0 15px 40px rgba(0,0,0,0.1); 
+        }
+        .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+        .full { grid-column: span 2; }
+
+        .input-box label { display: block; font-size: 0.9rem; font-weight: 600; margin-bottom: 8px; }
+        .input-box input, .input-box select, .input-box textarea {
+            width: 100%; padding: 15px; border: 1px solid #ddd; border-radius: 12px; outline: none;
+        }
+        .input-box input:focus { border-color: var(--secondary); }
+
+        .btn-send {
+            width: 100%; margin-top: 30px; background: var(--primary); color: white;
+            border: none; padding: 20px; border-radius: 50px; font-weight: 700;
+            font-size: 1.1rem; cursor: pointer; transition: 0.3s;
+        }
+        .btn-send:hover { background: var(--secondary); transform: translateY(-3px); }
+    </style>
+</head>
+<body>
+
+   <nav class="navbar">
+        <div class="logo">Vetro<span>Vivo</span></div>
+        <ul class="nav-links">
+            <li><a href="../tela_inicial/index.html">Início</a></li>
+        </ul>
+    </nav>
+    <div class="budget-container">
+        <div class="budget-header">
+            <h1>Finalizar Orçamento</h1>
+            <p>Preencha os dados abaixo e entraremos em contato para agendar a visita.</p>
+        </div>
+
+        <form class="budget-form" id="mainBudgetForm">
+            <div class="form-grid">
+                <div class="input-box full">
+                    <label>Tipo de Projeto</label>
+                    <select id="projectType">
+                        <option value="doce">Aquário de Água Doce</option>
+                        <option value="salgada">Aquário de Água Salgada</option>
+                    </select>
+                </div>
+                <div class="input-box">
+                    <label>Nome</label>
+                    <input type="text" required placeholder="Seu nome completo">
+                </div>
+                <div class="input-box">
+                    <label>WhatsApp</label>
+                    <input type="tel" required placeholder="(00) 00000-0000">
+                </div>
+                <div class="input-box full">
+                    <label>Observações</label>
+                    <textarea rows="4" placeholder="Algum detalhe específico?"></textarea>
+                </div>
+            </div>
+            <button type="submit" class="btn-send">Enviar Solicitação</button>
+        </form>
+    </div>
+
+    <script src="script-orcamento.js"></script>
+</body>
+</html>

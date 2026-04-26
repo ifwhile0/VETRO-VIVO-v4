@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projeto Sob Medida | Vetro Vivo</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-light">
+
+    <nav class="navbar">
+        <div class="logo">Vetro<span>Vivo</span></div>
+        <ul class="nav-links">
+            <li><a href="../tela_inicial/index.html">Início</a></li>
+            <li><a href="../tela_produtos/produtos.html">Produtos</a></li>
+            <li><a href="../orçamento/orcamento.html" class="perfil-btn">Pedir Orçamento</a></li>
+        </ul>
+    </nav>
+
+    <header class="service-hero-doce">
+        <div class="hero-text">
+            <h1>Ecossistemas Aquáticos</h1>
+            <p>A tranquilidade da natureza projetada para o seu ambiente.</p>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="configurator">
+            <h2>Simulador de Projeto (Água Doce)</h2>
+            <p class="subtitle">Escolha as opções abaixo para uma estimativa em tempo real.</p>
+
+            <div class="config-grid">
+                <div class="config-card">
+                    <h3>1. Dimensões do Vidro</h3>
+                    <div class="option-list">
+                        <label>
+                            <input type="radio" name="vidro" checked> 
+                            <span class="option-text">Médio (200L)</span>
+                            <span class="option-price">R$ 1.200,00</span>
+                        </label>
+                        <label>
+                            <input type="radio" name="vidro"> 
+                            <span class="option-text">Grande (450L)</span>
+                            <span class="option-price">R$ 2.800,00</span>
+                        </label>
+                        <label>
+                            <input type="radio" name="vidro"> 
+                            <span class="option-text">Premium (840L)</span>
+                            <span class="option-price">R$ 5.500,00</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="config-card">
+                    <h3>2. Sistema de Filtragem</h3>
+                    <div class="option-list">
+                        <label>
+                            <input type="radio" name="filtro" checked> 
+                            <span class="option-text">Canister Profissional</span>
+                            <span class="option-price">R$ 850,00</span>
+                        </label>
+                        <label>
+                            <input type="radio" name="filtro"> 
+                            <span class="option-text">Sistema Sump Externo</span>
+                            <span class="option-price">R$ 1.500,00</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="config-card">
+                    <h3>3. Adicionais Estéticos</h3>
+                    <div class="option-list">
+                        <label>
+                            <input type="checkbox"> 
+                            <span class="option-text">Rochas e Troncos</span>
+                            <span class="option-price">R$ 450,00</span>
+                        </label>
+                        <label>
+                            <input type="checkbox"> 
+                            <span class="option-text">Substrato e Plantas</span>
+                            <span class="option-price">R$ 600,00</span>
+                        </label>
+                        <label>
+                            <input type="checkbox"> 
+                            <span class="option-text">Iluminação LED</span>
+                            <span class="option-price">R$ 950,00</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="total-box">
+                <p>Estimativa Inicial: <strong id="total-price">R$ 2.050,00</strong></p>
+                <a href="orcamento.html?tipo=doce" class="btn-cta">Agendar Visita Técnica</a>
+            </div>
+        </section>
+    </main>
+
+    <main class="container">
+        <section class="configurator">
+            <h2>Simulador de Projeto Marinho</h2>
+            <p class="subtitle">Selecione os componentes de alta tecnologia para seu recife particular.</p>
+
+            <div class="config-grid">
+                <div class="config-card">
+                    <h3>1. Aquário Extra Clear</h3>
+                    <div class="option-list">
+                        <label>
+                            <input type="radio" name="vidro-sal" checked> 
+                            <span class="option-text">Médio (250L)</span>
+                            <span class="option-price">R$ 2.500,00</span>
+                        </label>
+                        <label>
+                            <input type="radio" name="vidro-sal"> 
+                            <span class="option-text">Grande (500L)</span>
+                            <span class="option-price">R$ 5.800,00</span>
+                        </label>
+                        <label>
+                            <input type="radio" name="vidro-sal"> 
+                            <span class="option-text">Exhibition (1000L)</span>
+                            <span class="option-price">R$ 12.000,00</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="config-card">
+                    <h3>2. Skimmer e Sump</h3>
+                    <div class="option-list">
+                        <label>
+                            <input type="radio" name="filtro-sal" checked> 
+                            <span class="option-text">Kit Skimmer Pro</span>
+                            <span class="option-price">R$ 2.200,00</span>
+                        </label>
+                        <label>
+                            <input type="radio" name="filtro-sal"> 
+                            <span class="option-text">Sump Full Automation</span>
+                            <span class="option-price">R$ 4.500,00</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="config-card">
+                    <h3>3. Hardscape e Sal</h3>
+                    <div class="option-list">
+                        <label>
+                            <input type="checkbox"> 
+                            <span class="option-text">Rochas de Recife</span>
+                            <span class="option-price">R$ 900,00</span>
+                        </label>
+                        <label>
+                            <input type="checkbox"> 
+                            <span class="option-text">Sal Sintético Premium</span>
+                            <span class="option-price">R$ 750,00</span>
+                        </label>
+                        <label>
+                            <input type="checkbox"> 
+                            <span class="option-text">Iluminação Blue/UV</span>
+                            <span class="option-price">R$ 2.400,00</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="total-box">
+                <p>Estimativa Inicial: <strong id="total-price-sal">R$ 4.700,00</strong></p>
+                <a href="orcamento.html?tipo=salgada" class="btn-cta">Agendar Consultoria Marinha</a>
+            </div>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>

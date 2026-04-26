@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pagamento | Vetro Vivo</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Estilos Integrados para garantir o visual da Vetro Vivo */
+        :root {
+            --primary: #004684;
+            --secondary: #00bcd4;
+            --white: #ffffff;
+            --bg: #f4f9ff;
+            --text: #333;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
+        body { background-color: var(--bg); color: var(--text); }
+        .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
+
+        /* Navbar */
+        .navbar {
+            padding: 20px 0;
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(0, 70, 132, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .navbar .container { display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-size: 1.5rem; font-weight: 700; color: var(--primary); }
+        .logo span { color: var(--secondary); }
+        .back-home { text-decoration: none; color: var(--primary); font-weight: 500; font-size: 0.9rem; }
+
+        /* Layout */
+        .payment-hero { padding: 40px 0; }
+        .payment-grid { display: grid; grid-template-columns: 2fr 1fr; gap: 30px; }
+
+        .payment-card, .summary-card {
+            background: var(--white);
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 70, 132, 0.05);
+        }
+
+        h2 { color: var(--primary); margin-bottom: 25px; }
+        h3 { font-size: 0.9rem; color: var(--primary); margin-bottom: 15px; text-transform: uppercase; letter-spacing: 1px; }
+
+        /* Inputs */
+        input {
+            width: 100%; padding: 12px; margin-bottom: 15px;
+            border: 1.5px solid #eee; border-radius: 10px;
+            background: #fdfdfd; transition: 0.3s;
+        }
+        input:focus { border-color: var(--secondary); outline: none; background: #fff; }
+        .row { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+
+        /* Botão */
+        .btn-main {
+            width: 100%; padding: 15px; border: none;
+            background: var(--primary); color: white;
+            border-radius: 50px; font-weight: 700; cursor: pointer; transition: 0.3s;
+        }
+        .btn-main:hover { background: var(--secondary); transform: translateY(-2px); }
+
+        /* Resumo */
+        .summary-card { background: var(--primary); color: white; height: fit-content; }
+        .summary-item { display: flex; justify-content: space-between; margin-bottom: 10px; opacity: 0.8; font-size: 0.9rem; }
+        hr { margin: 15px 0; border: 0; border-top: 1px solid rgba(255,255,255,0.1); }
+        .summary-total { display: flex; justify-content: space-between; font-weight: 700; font-size: 1.2rem; }
+
+        @media (max-width: 850px) { .payment-grid { grid-template-columns: 1fr; } }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">Vetro<span>Vivo</span></div>
+            <a href="../tela_produtos/produtos.html" class="back-home">← Voltar para a loja</a>
+        </div>
+    </nav>
+
+    <main class="payment-hero">
+        <div class="container">
+            <div class="payment-grid">
+                <div class="payment-card">
+                    <h2>Checkout</h2>
+                    <form id="payment-form">
+                        <section class="form-group">
+                            <h3>Informações de Entrega</h3>
+                            <input type="text" placeholder="Nome Completo" required>
+                            <div class="row">
+                                <input type="text" placeholder="CEP" required>
+                                <input type="text" placeholder="Cidade" required>
+                            </div>
+                            <input type="text" placeholder="Endereço (Rua, Número e Bairro)" required>
+                            <input type="text" placeholder="Complemento (Ex: Apto 12, Bloco B, Casa)" id="complemento">
+                        </section>
+
+                        <section class="form-group">
+                            <h3>Dados de Pagamento</h3>
+                            <input type="text" placeholder="Número do Cartão" id="card-number" maxlength="19" required>
+                            <div class="row">
+                                <input type="text" placeholder="Validade (MM/AA)" maxlength="5" required>
+                                <input type="text" placeholder="CVV" maxlength="3" required>
+                            </div>
+                        </section>
+
+                        <button type="submit" class="btn-main">Finalizar Pagamento</button>
+                    </form>
+                </div>
+
+                <div class="summary-card">
+                    <h3>Resumo</h3>
+                    <div class="summary-item"><span>Projeto Customizado</span><span>R$ 0,00</span></div>
+                    <div class="summary-item"><span>Instalação</span><span>R$ 0,00</span></div>
+                    <hr>
+                    <div class="summary-total"><span>Total</span><span>R$ 0,00</span></div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // Lógica simples para o cartão
+        const cardInput = document.getElementById('card-number');
+        cardInput.addEventListener('input', (e) => {
+            let v = e.target.value.replace(/\D/g, '');
+            v = v.match(/.{1,4}/g)?.join(' ') || '';
+            e.target.value = v;
+        });
+
+        document.getElementById('payment-form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert("Processando pagamento da Vetro Vivo...");
+            setTimeout(() => {
+                alert("Sucesso! Entraremos em contato para agendar a instalação.");
+                window.location.href = "index.html";
+            }, 1500);
+        });
+    </script>
+</body>
+</html>
